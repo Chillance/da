@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Adding car with no carplate:"
 echo "----------------------------"
 curl -i -XPOST -d '{ "color": "blue", "year": 2016 }' -H "Content-Type: application/json" http://127.0.0.1:8080/cars
