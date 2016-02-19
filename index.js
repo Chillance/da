@@ -52,7 +52,7 @@ function queryParams(q, req) {
   }
 
   if (req.query.limit) {
-    q.limit(req.query.limit);
+    q.limit(parseInt(req.query.limit));
   }
 }
 
@@ -123,6 +123,10 @@ app.put('/cars/:id', function(req, res) {
   q.exec(function(err, c) {
     if (err) {
       console.log(err);
+      res.status(400);
+      res.json({
+        message: "Error updating car. Please notify support."
+      });
       return;
     }
 
@@ -162,6 +166,10 @@ app.delete('/cars/:id', function(req, res) {
   q.exec(function(err, c) {
     if (err) {
       console.log(err);
+      res.status(400);
+      res.json({
+        message: "Error removing car. Please notify support."
+      });
       return;
     }
 
